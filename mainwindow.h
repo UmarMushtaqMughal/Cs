@@ -3,8 +3,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <ui_mainwindow.h>
-
+#include "data.cpp"
+#include <fstream>
+#include <sstream>
+#include <QString>
 
 
 
@@ -20,21 +22,28 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void saveInventoryToFile(const string &filename);
+    void loadInventoryFromFile(const string &filename);
+    Inventory inventory;
 
-    void sellItem();
 private slots:
-    void on_AddItem_clicked();
+    void on_OptionCB_currentIndexChanged(int index);
 
-    void on_pushButton_delete_clicked();
+    void on_pushButton_clicked();
 
-    void on_pushButton_Save_clicked();
+    void on_AddPB_clicked();
 
-    void on_pushButton_Load_clicked();
+    void on_RemovePB_clicked();
 
-    void on_sellButton_clicked();
+    void on_LoadPB_clicked();
+
+    void on_SavePB_clicked();
+
+    void on_SalePB_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QStatusBar *statusBar;
 };
 
 #endif // MAINWINDOW_H
