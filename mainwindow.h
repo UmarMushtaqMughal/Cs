@@ -3,6 +3,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <ui_mainwindow.h>
+
 
 
 
@@ -18,6 +20,18 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void sellItem();
+private slots:
+    void on_AddItem_clicked();
+
+    void on_pushButton_delete_clicked();
+
+    void on_pushButton_Save_clicked();
+
+    void on_pushButton_Load_clicked();
+
+    void on_sellButton_clicked();
 
 private:
     Ui::MainWindow *ui;
