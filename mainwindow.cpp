@@ -25,15 +25,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->spinBox->setVisible(false);
 
 
-//    if (ui->OptionCB->currentIndex() == 0  )
-//    {
-//        ui->Grocery->setVisible(true);
-//        ui->Clothing->setVisible(false);
-//        ui->InventoryTW->setVisible(true);
-//        ui->InventoryTW_2->setVisible(false);
-//        statusBar = new QStatusBar(this);
-//        setStatusBar(statusBar);
-//    }
+    //    if (ui->OptionCB->currentIndex() == 0  )
+    //    {
+    //        ui->Grocery->setVisible(true);
+    //        ui->Clothing->setVisible(false);
+    //        ui->InventoryTW->setVisible(true);
+    //        ui->InventoryTW_2->setVisible(false);
+    //        statusBar = new QStatusBar(this);
+    //        setStatusBar(statusBar);
+    //    }
 }
 
 MainWindow::~MainWindow()
@@ -326,5 +326,63 @@ void MainWindow::on_LoginSalesmanPB_clicked()
     ui->LoadPB->setVisible(false);
     ui->SellPB->setVisible(true);
     ui->spinBox->setVisible(true);
+}
+
+
+void MainWindow::on_SellPB_clicked()
+{
+    // Get the selected item
+    if (ui->OptionCB->currentIndex() == 0)
+    {
+        QList<QTableWidgetItem *> selectedItems = ui->InventoryTW->selectedItems();
+        if (selectedItems.isEmpty())
+        {
+            // write the error msg in status bar in future
+            return;
+        }
+
+        QTableWidgetItem *item = selectedItems.at(0);
+        int row = item->row();
+
+        QTableWidgetItem *quantityItem = ui->InventoryTW->item(row, 2);
+
+        QString quantity = quantityItem->text();
+        QString amount = ui->spinBox->text();
+
+        //    bool ok = false;
+        //    int soldQuantity = QInputDialog::getInt(this, tr("Sell Item"), tr("Enter sold quantity:"), 1, 1, quantity.toInt(), 1, &ok);
+        //    if (!ok)
+        //        return;
+
+        // Update quantity in the table
+        int newQuantity = quantity.toInt() - amount.toInt();
+        quantityItem->setText(QString::number(newQuantity));
+    }
+    else
+    {
+        QList<QTableWidgetItem *> selectedItems = ui->InventoryTW_2->selectedItems();
+        if (selectedItems.isEmpty())
+        {
+            // write the error msg in status bar in future
+            return;
+        }
+
+        QTableWidgetItem *item = selectedItems.at(0);
+        int row = item->row();
+
+        QTableWidgetItem *quantityItem = ui->InventoryTW_2->item(row, 2);
+
+        QString quantity = quantityItem->text();
+        QString amount = ui->spinBox->text();
+
+        //    bool ok = false;
+        //    int soldQuantity = QInputDialog::getInt(this, tr("Sell Item"), tr("Enter sold quantity:"), 1, 1, quantity.toInt(), 1, &ok);
+        //    if (!ok)
+        //        return;
+
+        // Update quantity in the table
+        int newQuantity = quantity.toInt() - amount.toInt();
+        quantityItem->setText(QString::number(newQuantity));
+    }
 }
 
