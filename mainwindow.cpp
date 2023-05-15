@@ -337,7 +337,8 @@ void MainWindow::on_SellPB_clicked()
         QList<QTableWidgetItem *> selectedItems = ui->InventoryTW->selectedItems();
         if (selectedItems.isEmpty())
         {
-            // write the error msg in status bar in future
+            QString errorMessage = "Select the Item first " ;
+            statusBar->showMessage(errorMessage, 5000);
             return;
         }
 
@@ -349,21 +350,25 @@ void MainWindow::on_SellPB_clicked()
         QString quantity = quantityItem->text();
         QString amount = ui->spinBox->text();
 
-        //    bool ok = false;
-        //    int soldQuantity = QInputDialog::getInt(this, tr("Sell Item"), tr("Enter sold quantity:"), 1, 1, quantity.toInt(), 1, &ok);
-        //    if (!ok)
-        //        return;
-
         // Update quantity in the table
-        int newQuantity = quantity.toInt() - amount.toInt();
-        quantityItem->setText(QString::number(newQuantity));
+        if(amount.toInt() <= quantity.toInt())
+        {
+            int newQuantity = quantity.toInt() - amount.toInt();
+            quantityItem->setText(QString::number(newQuantity));
+        }
+        else
+        {
+            QString errorMessage = "Insufficient stock available" ;
+            statusBar->showMessage(errorMessage, 5000);
+        }
     }
     else
     {
         QList<QTableWidgetItem *> selectedItems = ui->InventoryTW_2->selectedItems();
         if (selectedItems.isEmpty())
         {
-            // write the error msg in status bar in future
+            QString errorMessage = "Select the Item first " ;
+            statusBar->showMessage(errorMessage, 5000);
             return;
         }
 
@@ -375,14 +380,17 @@ void MainWindow::on_SellPB_clicked()
         QString quantity = quantityItem->text();
         QString amount = ui->spinBox->text();
 
-        //    bool ok = false;
-        //    int soldQuantity = QInputDialog::getInt(this, tr("Sell Item"), tr("Enter sold quantity:"), 1, 1, quantity.toInt(), 1, &ok);
-        //    if (!ok)
-        //        return;
-
         // Update quantity in the table
-        int newQuantity = quantity.toInt() - amount.toInt();
-        quantityItem->setText(QString::number(newQuantity));
+        if(amount.toInt() <= quantity.toInt())
+        {
+            int newQuantity = quantity.toInt() - amount.toInt();
+            quantityItem->setText(QString::number(newQuantity));
+        }
+        else
+        {
+            QString errorMessage = "Insufficient stock available" ;
+            statusBar->showMessage(errorMessage, 5000);
+        }
     }
 }
 
