@@ -6,15 +6,34 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    if (ui->OptionCB->currentIndex() == 0)
-    {
-        ui->Grocery->setVisible(true);
-        ui->Clothing->setVisible(false);
-        ui->InventoryTW->setVisible(true);
-        ui->InventoryTW_2->setVisible(false);
-        statusBar = new QStatusBar(this);
-        setStatusBar(statusBar);
-    }
+
+    ui->Namelabel->setVisible(false);
+    ui->NameLE->setVisible(false);
+    ui->SKULabel->setVisible(false);
+    ui->SKULE->setVisible(false);
+    ui->QuantityLabel->setVisible(false);
+    ui->QuantityLE->setVisible(false);
+    ui->PriceLabel->setVisible(false);
+    ui->PriceLineEdit->setVisible(false);
+    ui->Grocery->setVisible(false);
+    ui->Clothing->setVisible(false);
+    ui->AddPB->setVisible(false);
+    ui->RemovePB->setVisible(false);
+    ui->SavePB->setVisible(false);
+    ui->LoadPB->setVisible(false);
+    ui->SellPB->setVisible(false);
+    ui->spinBox->setVisible(false);
+
+
+//    if (ui->OptionCB->currentIndex() == 0  )
+//    {
+//        ui->Grocery->setVisible(true);
+//        ui->Clothing->setVisible(false);
+//        ui->InventoryTW->setVisible(true);
+//        ui->InventoryTW_2->setVisible(false);
+//        statusBar = new QStatusBar(this);
+//        setStatusBar(statusBar);
+//    }
 }
 
 MainWindow::~MainWindow()
@@ -255,5 +274,57 @@ void MainWindow::on_LoadPB_clicked()
 void MainWindow::on_SavePB_clicked()
 {
     saveInventoryToFile("inventory.txt");
+}
+
+
+void MainWindow::on_loginManagerPB_clicked()
+{
+    ui->Namelabel->setVisible(true);
+    ui->NameLE->setVisible(true);
+    ui->SKULabel->setVisible(true);
+    ui->SKULE->setVisible(true);
+    ui->QuantityLabel->setVisible(true);
+    ui->QuantityLE->setVisible(true);
+    ui->PriceLabel->setVisible(true);
+    ui->PriceLineEdit->setVisible(true);
+    ui->Grocery->setVisible(true);
+    ui->Clothing->setVisible(true);
+    ui->AddPB->setVisible(true);
+    ui->RemovePB->setVisible(true);
+    ui->SavePB->setVisible(true);
+    ui->LoadPB->setVisible(true);
+    ui->SellPB->setVisible(false);
+    ui->spinBox->setVisible(false);
+
+    if (ui->OptionCB->currentIndex() == 0  )
+    {
+        ui->Grocery->setVisible(true);
+        ui->Clothing->setVisible(false);
+        ui->InventoryTW->setVisible(true);
+        ui->InventoryTW_2->setVisible(false);
+        statusBar = new QStatusBar(this);
+        setStatusBar(statusBar);
+    }
+}
+
+
+void MainWindow::on_LoginSalesmanPB_clicked()
+{
+    ui->Namelabel->setVisible(false);
+    ui->NameLE->setVisible(false);
+    ui->SKULabel->setVisible(false);
+    ui->SKULE->setVisible(false);
+    ui->QuantityLabel->setVisible(false);
+    ui->QuantityLE->setVisible(false);
+    ui->PriceLabel->setVisible(false);
+    ui->PriceLineEdit->setVisible(false);
+    ui->Grocery->setVisible(false);
+    ui->Clothing->setVisible(false);
+    ui->AddPB->setVisible(false);
+    ui->RemovePB->setVisible(false);
+    ui->SavePB->setVisible(false);
+    ui->LoadPB->setVisible(false);
+    ui->SellPB->setVisible(true);
+    ui->spinBox->setVisible(true);
 }
 

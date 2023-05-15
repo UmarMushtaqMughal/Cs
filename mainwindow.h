@@ -41,6 +41,10 @@ private slots:
 
     void on_SalePB_clicked();
 
+    void on_loginManagerPB_clicked();
+
+    void on_LoginSalesmanPB_clicked();
+
 private:
     Ui::MainWindow *ui;
     QStatusBar *statusBar;
