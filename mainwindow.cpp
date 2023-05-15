@@ -296,7 +296,7 @@ void MainWindow::on_loginManagerPB_clicked()
     ui->SellPB->setVisible(false);
     ui->spinBox->setVisible(false);
 
-    if (ui->OptionCB->currentIndex() == 0  )
+    if (ui->OptionCB->currentIndex() == 0 || ui->OptionCB->currentIndex() == 1 )
     {
         ui->Grocery->setVisible(true);
         ui->Clothing->setVisible(false);
@@ -326,6 +326,16 @@ void MainWindow::on_LoginSalesmanPB_clicked()
     ui->LoadPB->setVisible(false);
     ui->SellPB->setVisible(true);
     ui->spinBox->setVisible(true);
+
+    if (ui->OptionCB->currentIndex() == 1 ||ui->OptionCB->currentIndex() == 0  )
+    {
+        ui->Grocery->setVisible(false);
+        ui->Clothing->setVisible(false);
+        ui->InventoryTW->setVisible(false);
+        ui->InventoryTW_2->setVisible(true);
+        statusBar = new QStatusBar(this);
+        setStatusBar(statusBar);
+    }
 }
 
 
