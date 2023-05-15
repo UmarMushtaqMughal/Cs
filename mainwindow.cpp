@@ -296,14 +296,19 @@ void MainWindow::on_loginManagerPB_clicked()
     ui->SellPB->setVisible(false);
     ui->spinBox->setVisible(false);
 
-    if (ui->OptionCB->currentIndex() == 0 || ui->OptionCB->currentIndex() == 1 )
+    if (ui->OptionCB->currentIndex() == 0  )
     {
         ui->Grocery->setVisible(true);
         ui->Clothing->setVisible(false);
         ui->InventoryTW->setVisible(true);
         ui->InventoryTW_2->setVisible(false);
-        statusBar = new QStatusBar(this);
-        setStatusBar(statusBar);
+    }
+    else
+    {
+        ui->Grocery->setVisible(false);
+        ui->Clothing->setVisible(true);
+        ui->InventoryTW->setVisible(false);
+        ui->InventoryTW_2->setVisible(true);
     }
 }
 
@@ -327,14 +332,19 @@ void MainWindow::on_LoginSalesmanPB_clicked()
     ui->SellPB->setVisible(true);
     ui->spinBox->setVisible(true);
 
-    if (ui->OptionCB->currentIndex() == 1 ||ui->OptionCB->currentIndex() == 0  )
+    if (ui->OptionCB->currentIndex() == 0  )
     {
-        ui->Grocery->setVisible(false);
-        ui->Clothing->setVisible(false);
+//        ui->Grocery->setVisible(true);
+//        ui->Clothing->setVisible(false);
+        ui->InventoryTW->setVisible(true);
+        ui->InventoryTW_2->setVisible(false);
+    }
+    else
+    {
+//        ui->Grocery->setVisible(false);
+//        ui->Clothing->setVisible(true);
         ui->InventoryTW->setVisible(false);
         ui->InventoryTW_2->setVisible(true);
-        statusBar = new QStatusBar(this);
-        setStatusBar(statusBar);
     }
 }
 
